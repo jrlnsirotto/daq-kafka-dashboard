@@ -82,5 +82,18 @@ def test_modify_parameters():
     api_output_check = httpx.get("http://127.0.0.1:8000/daq/parameters")
 
     content = json.loads(api_output_check.content)
-    breakpoint()
+
     assert 200 == status and new_parameters == content
+
+
+def test_get_dataset():
+
+    api_output = httpx.get("http://127.0.0.1:8000/dataset/data")
+
+    status = api_output.status_code
+
+    data = json.loads(api_output.content)
+    expected = ["id", "time", "signal"]
+    value = list(data[0].keys())
+
+    assert 200 == status and value == expected
