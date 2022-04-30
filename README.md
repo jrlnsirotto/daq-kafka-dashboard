@@ -44,7 +44,7 @@ On your cmd
 2. make deps : Install requirements
 3. source venv/bin/activate : Active your virtual environment
 4. make docker-kafka : Install and use docker compose to initialize kafka and zookeeper
-5. make create-topic : Cria um tópico
+5. make create-topic : Create a topic
 6. make producer-message : Start the producer. Virtual enviroment needed.
 7. make consumer-message : Start the consumer.  Virtual enviroment needed.
 8. make api-server : Start the API serve. Virtual enviroment needed.
