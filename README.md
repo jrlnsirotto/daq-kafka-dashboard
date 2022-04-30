@@ -33,6 +33,8 @@ Construct a DAQ dashboard using kafka, plotlydashboard, API rest and HDF5 files 
 |-main.py: API Rest definitions
 |
 |-makefile: Several cmd command, used as shortcuts
+|
+|-figures: Just to save some images that helps a explain the service
 ```
 
 
