@@ -14,6 +14,12 @@ Construct a DAQ dashboard using kafka, plotlydashboard, API rest and HDF5 files 
 | |-docker-compose.yml: stores docker settings from kafka and zookepper
 | |-requirements.txt: requirements needed to run the application
 |
+|-dashboard
+| |-app.py: main code to make interactive dashboard avaible
+| |-callbacks.py: responsible for refresh the page, when an interaction occurs
+| |-elements.py: modules that contains several pre-build elements 
+| |-layout.py: create the page structure 
+|
 |-data_consumer
 | |-consumer: module responsible for consuming the messages
 |
@@ -34,7 +40,7 @@ Construct a DAQ dashboard using kafka, plotlydashboard, API rest and HDF5 files 
 |
 |-makefile: Several cmd command, used as shortcuts
 |
-|-figures: Just to save some images that helps a explain the service
+|-figures: Just to save some images that helps a explain the service in README.md file
 ```
 
 
