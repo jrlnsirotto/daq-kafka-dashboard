@@ -72,3 +72,6 @@ On your cmd
 4. make api-server : Start the API serve. Virtual enviroment needed.
 5. make run-test-api (in another terminal) : Run tests using pytest. Virtual enviroment needed.
 
+# CURRENT STYLE
+
+![plot](./figures/CURRENT_STYLE.png)
