@@ -3,6 +3,7 @@ import h5py
 import numpy as np
 import pandas as pd
 import warnings
+import traceback
 
 warnings.filterwarnings("ignore")
 
@@ -27,13 +28,20 @@ def dataset_insert(filename: str, group: str, dataset: str, message: dict):
     print("Dataset saved")
 
 
-def dataset_del(filename: str, group: str, dataset: str):
+def dataset_del(filename: str, group: str):
+    try:
+        with h5py.File(f"data_storage/{filename}.hdf5", "a") as f:
 
-    with h5py.File(f"data_storage/{filename}.hdf5", "a") as f:
+            del f[f"/{group}"]
 
-        del f[f"/{group}/{dataset}"]
+            print("Group deleted")
 
-    print("Dataset deleted")
+        return True
+
+    except:
+        print("Was not possible to delete group")
+
+        return False
 
 
 def read_all_data(filename: str, group: str):
@@ -53,4 +61,18 @@ def read_all_data(filename: str, group: str):
             ignore_index=True,
         )
 
+    f.close()
     return all_data
+
+
+def del_measurement(filename: str, group: str, dataset: str, measurement: str):
+    try:
+        with h5py.File(f"data_storage/{filename}.hdf5", "a") as f:
+            del f[f"/{group}/{measurement}"]
+        print("Measurement deleted")
+
+        return True
+
+    except:
+        print(f"Was not possible to delete measurement. Error: {traceback.format_exc()}")
+        return False

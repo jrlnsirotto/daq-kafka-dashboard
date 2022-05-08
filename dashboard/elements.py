@@ -67,7 +67,7 @@ def dropDown(df, col, name, idName):
         df[col].unique(),
         name,
         id=idName,
-        style={"margin-bottom": f"50px", "width": 350, "height": 55},
+        style={"margin-bottom": f"50px", "width": 300, "height": 55},
     )
 
 

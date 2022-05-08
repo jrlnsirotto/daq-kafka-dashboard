@@ -6,7 +6,7 @@ from dash import dcc, html
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from dashboard import elements as el
 
-from dash_extensions.enrich import Output, Input
+from dash_extensions.enrich import Output, Input, State
 
 
 def register_callback(app):
@@ -19,7 +19,7 @@ def register_callback(app):
             Output("last_measurement", "children"),
             Output("times_measured", "children"),
         ],
-        Input("refresh_database", "n_clicks"),
+        [Input("refresh_database", "n_clicks")],
     )
     def refresh_data(n_clicks):
         if n_clicks.numerator >= 1:
@@ -175,3 +175,22 @@ def register_callback(app):
 
         else:
             return el.scatterGraph(df[df["id"] == value], "time", "signal", "id")
+
+    @app.callback(
+        [
+            Output("delete_measurement", "n_clicks"),
+        ],
+        [Input("delete_measurement", "n_clicks"), Input("drop_down", "value")],
+    )
+    def delete_measurement(n_clicks, value):
+        if n_clicks.numerator == 0:
+            return 0
+
+        if n_clicks.numerator >= 1:
+            new_parameters = {"measurement": value}
+            httpx.post(
+                "http://127.0.0.1:8000/dataset/data/delete",
+                data=json.dumps(new_parameters),
+            )
+
+            return 0

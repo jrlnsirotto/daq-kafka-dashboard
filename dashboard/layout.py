@@ -35,16 +35,37 @@ layout = dbc.Container(
                                     dbc.Col(
                                         [
                                             html.H6(
-                                                children=" MEASUREMENTS",
+                                                children="DELETE",
                                                 style={
                                                     "margin-top": f"10px",
-                                                    "margin-left": f"80px",
+                                                    "margin-left": f"20px",
+                                                },
+                                            ),
+                                            html.Button(
+                                                "SUBMIT",
+                                                id="delete_measurement",
+                                                n_clicks=0,
+                                                style={
+                                                    "margin-top": f"10px",
+                                                    "margin-left": f"10px",
+                                                    "width": 80,
+                                                },
+                                            ),
+                                        ]
+                                    ),
+                                    dbc.Col(
+                                        [
+                                            html.H6(
+                                                children="MEASUREMENTS",
+                                                style={
+                                                    "margin-top": f"10px",
+                                                    "margin-left": f"-20px",
                                                 },
                                             ),
                                             html.H2(
                                                 children="-",
                                                 id="times_measured",
-                                                style={"margin-left": f"130px"},
+                                                style={"margin-left": f"40px"},
                                             ),
                                         ]
                                     ),
@@ -91,6 +112,17 @@ layout = dbc.Container(
                                 ]
                             ),
                         ]
+                    ),
+                    dbc.Row(
+                        [
+                            html.H6(
+                                "*AFTER DELETING A MEASUREMENT CONSIDER REFRESH YOUR DATABASE",
+                                style={
+                                    "margin-top": f"20px",
+                                    "margin-left": f"10px",
+                                },
+                            )
+                        ],
                     ),
                 ]
             ),

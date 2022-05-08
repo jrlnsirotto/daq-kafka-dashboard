@@ -83,3 +83,18 @@ def get_dataset():
     data = manipulate_hdf5.read_all_data("measurements", "periodic_signal_group")
 
     return data.to_dict("records")
+
+
+class Item_delete(BaseModel):
+    measurement: str
+
+
+@app.post("/dataset/data/delete")
+def read_item(item: Item_delete):
+    measurement = list(item.dict().values())[0]
+
+    status = manipulate_hdf5.del_measurement(
+        "measurements", "periodic_signal_group", "signal", measurement
+    )
+
+    return status
